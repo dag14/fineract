@@ -11,7 +11,7 @@
 
 |spring.datasource.hikari.jdbcUrl
 |FINERACT_HIKARI_JDBC_URL
-|jdbc:mariadb://localhost:3306/fineract_tenants
+|jdbc:mariadb://localhost:3307/fineract_tenants
 |The database connection string for the database with tenant information that will be used with fineract.
 
 |spring.datasource.hikari.username

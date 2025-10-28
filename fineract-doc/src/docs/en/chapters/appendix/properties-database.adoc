@@ -11,7 +11,7 @@
 
 |fineract.tenant.port
 |FINERACT_DEFAULT_TENANTDB_PORT
-|3306
+|3307
 |This property sets the port of the default tenant database.
 
 |fineract.tenant.username

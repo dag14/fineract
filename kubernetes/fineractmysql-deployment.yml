@@ -16,7 +16,6 @@
 # under the License.
 #
 
-
 apiVersion: v1
 kind: PersistentVolume
 metadata:
@@ -33,7 +32,6 @@ spec:
     path: "/mnt/data"
 
 ---
-
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -47,7 +45,6 @@ spec:
       storage: 5Gi
 
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
@@ -57,15 +54,14 @@ metadata:
 spec:
   ports:
     - protocol: TCP
-      port: 3306
-      targetPort: 3306
+      port: 3307
+      targetPort: 3307
   selector:
     app: fineract-server
     tier: fineractmysql
   clusterIP: None
 
 ---
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -103,7 +99,12 @@ spec:
                   key: password
           livenessProbe:
             exec:
-              command: ["sh","-c","mysqladmin ping -h localhost -uroot -p${MARIADB_ROOT_PASSWORD}"]
+              command:
+                [
+                  "sh",
+                  "-c",
+                  "mysqladmin ping -h localhost -uroot -p${MARIADB_ROOT_PASSWORD}",
+                ]
             failureThreshold: 10
             timeoutSeconds: 10
           readinessProbe:
@@ -116,7 +117,7 @@ spec:
             initialDelaySeconds: 5
             periodSeconds: 5
           ports:
-            - containerPort: 3306
+            - containerPort: 3307
               name: fineractmysql
           volumeMounts:
             - name: fineractmysql-initdb

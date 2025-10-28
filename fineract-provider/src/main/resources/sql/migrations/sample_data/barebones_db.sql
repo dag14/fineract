@@ -5861,7 +5861,7 @@ INSERT INTO `schema_version` (`version_rank`, `installed_rank`, `version`, `desc
     (21, 21, '21', 'activation-permissions-for-clients', 'SQL', 'V21__activation-permissions-for-clients.sql', 1289685589, 'root', '2015-06-03 15:26:52', 45, 1),
     (223, 223, '210', 'track manually adjusted transactions', 'SQL', 'V210__track_manually_adjusted_transactions.sql', -1444778976, 'root', '2015-06-03 15:27:08', 47, 1),
     (224, 224, '211', 'minimum days between disbursal and first repayment', 'SQL', 'V211__minimum_days_between_disbursal_and_first_repayment.sql', 1660532746, 'root', '2015-06-03 15:27:08', 51, 1),
-    (225, 225, '212', 'add NthDay and DayOfWeek columns loan', 'SQL', 'V212__add_NthDay_and_DayOfWeek_columns_loan.sql', -924123306, 'root', '2015-06-03 15:27:08', 100, 1),
+    (225, 225, '212', 'add NthDay and DayOfWeek columns loan', 'SQL', 'V212__add_NthDay_and_DayOfWeek_columns_loan.sql', -924123307, 'root', '2015-06-03 15:27:08', 100, 1),
     (226, 226, '213', 'NthDay and DayOfWeek columns should be nullable', 'SQL', 'V213__NthDay_and_DayOfWeek_columns_should_be_nullable.sql', -240730886, 'root', '2015-06-03 15:27:09', 135, 1),
     (227, 227, '214', 'alter table add create SI at disbursement', 'SQL', 'V214__alter_table_add_create_SI_at_disbursement.sql', -473599398, 'root', '2015-06-03 15:27:09', 272, 1),
     (228, 228, '215', 'guarantee on hold fund changes', 'SQL', 'V215__guarantee_on_hold_fund_changes.sql', 111795154, 'root', '2015-06-03 15:27:09', 235, 1),

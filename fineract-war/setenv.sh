@@ -21,7 +21,7 @@
 export FINERACT_NODE_ID="1"
 # NOTE: env vars prefixed "FINERACT_HIKARI_*" are used to configure the database connection pool
 export FINERACT_HIKARI_DRIVER_SOURCE_CLASS_NAME="org.mariadb.jdbc.Driver"
-export FINERACT_HIKARI_JDBC_URL="jdbc:mariadb://fineractmysql:3306/fineract_tenants"
+export FINERACT_HIKARI_JDBC_URL="jdbc:mariadb://fineractmysql:3307/fineract_tenants"
 export FINERACT_HIKARI_USERNAME="root"
 export FINERACT_HIKARI_PASSWORD="skdcnwauicn2ucnaecasdsajdnizucawencascdca"
 # ... following variables are optional; "application.properties" contains reasonable defaults (same as here)
@@ -45,7 +45,7 @@ export FINERACT_HIKARI_DS_PROPERTIES_LOG_SLOW_QUERIES="true"
 export FINERACT_HIKARI_DS_PROPERTIES_DUMP_QUERIES_IN_EXCEPTION="true"
 # NOTE: env vars prefixed "FINERACT_DEFAULT_TENANTDB_*" are used to create the default tenant database
 export FINERACT_DEFAULT_TENANTDB_HOSTNAME="fineractmysql"
-export FINERACT_DEFAULT_TENANTDB_PORT="3306"
+export FINERACT_DEFAULT_TENANTDB_PORT="3307"
 export FINERACT_DEFAULT_TENANTDB_UID="root"
 export FINERACT_DEFAULT_TENANTDB_PWD="skdcnwauicn2ucnaecasdsajdnizucawencascdca"
 export FINERACT_DEFAULT_TENANTDB_CONN_PARAMS=""

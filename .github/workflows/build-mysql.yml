@@ -19,7 +19,7 @@ jobs:
       mysql:
         image: mysql:9.1
         ports:
-          - 3306:3306
+          - 3307:3307
         env:
           MYSQL_ROOT_PASSWORD: mysql
         options: --health-cmd="mysqladmin ping" --health-interval=5s --health-timeout=2s --health-retries=3
@@ -52,8 +52,8 @@ jobs:
       - name: Set up JDK 21
         uses: actions/setup-java@dded0888837ed1f317902acf8a20df0ad188d165 # v4
         with:
-          java-version: '21'
-          distribution: 'zulu'
+          java-version: "21"
+          distribution: "zulu"
 
       - name: Cache Gradle dependencies
         uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
@@ -70,7 +70,7 @@ jobs:
 
       - name: Verify MySQL connection
         run: |
-          while ! mysqladmin ping -h"127.0.0.1" -P3306 ; do
+          while ! mysqladmin ping -h"127.0.0.1" -P3307 ; do
             sleep 1
           done
 
@@ -138,7 +138,7 @@ jobs:
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: test-results-${{ matrix.task }}
-          path: '**/build/reports/'
+          path: "**/build/reports/"
           retention-days: 5
 
       - name: Archive server logs
@@ -146,5 +146,5 @@ jobs:
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: server-logs-${{ matrix.task }}
-          path: '**/build/cargo/'
+          path: "**/build/cargo/"
           retention-days: 5

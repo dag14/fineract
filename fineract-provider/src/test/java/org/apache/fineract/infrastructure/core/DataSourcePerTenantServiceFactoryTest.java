@@ -60,7 +60,7 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 public class DataSourcePerTenantServiceFactoryTest {
 
     public static final String MASTER_DB_SERVER = "localhost";
-    public static final String MASTER_DB_SERVER_PORT = "3306";
+    public static final String MASTER_DB_SERVER_PORT = "3307";
     public static final String MASTER_DB_SCHEMA_NAME = "fineract_tenants";
     public static final String MASTER_DB_USERNAME = "root";
     public static final String MASTER_DB_PASSWORD = "password";
@@ -69,7 +69,7 @@ public class DataSourcePerTenantServiceFactoryTest {
             + MASTER_DB_SCHEMA_NAME + "?" + MASTER_DB_CONN_PARAMS;
 
     public static final String READONLY_DB_SERVER = "localhost-readonly";
-    public static final String READONLY_DB_SERVER_PORT = "3306-readonly";
+    public static final String READONLY_DB_SERVER_PORT = "3307-readonly";
     public static final String READONLY_DB_SCHEMA_NAME = "fineract_tenants-readonly";
     public static final String READONLY_DB_USERNAME = "root-readonly";
     public static final String READONLY_DB_PASSWORD = "password-readonly";
@@ -129,7 +129,7 @@ public class DataSourcePerTenantServiceFactoryTest {
         DatabaseMetaData databaseMetaData = mock(DatabaseMetaData.class);
         given(connection.getMetaData()).willReturn(databaseMetaData);
 
-        given(databaseMetaData.getURL()).willReturn("jdbc:mariadb://localhost:3306/fineract_tenants");
+        given(databaseMetaData.getURL()).willReturn("jdbc:mariadb://localhost:3307/fineract_tenants");
 
         given(tenantConnection.getSchemaServer()).willReturn(MASTER_DB_SERVER);
         given(tenantConnection.getSchemaServerPort()).willReturn(MASTER_DB_SERVER_PORT);

@@ -1887,7 +1887,7 @@ class ProgressiveEMICalculatorTest {
 
         checkPeriod(interestSchedule, 0, 0, 17.01, 0.0, 0.0, 1.17, 15.84, 84.16);
         checkPeriod(interestSchedule, 0, 1, 17.01, 0.005833333333, 1.1666666667, 1.17, 15.84, 84.16);
-        checkPeriod(interestSchedule, 1, 0, 17.01, 0.005833333333, 0.490933333306, 0.49, 16.52, 67.64);
+        checkPeriod(interestSchedule, 1, 0, 17.01, 0.005833333333, 0.490933333307, 0.49, 16.52, 67.64);
         checkPeriod(interestSchedule, 2, 0, 17.01, 0.005833333333, 0.394566666645, 0.39, 16.62, 51.02);
         checkPeriod(interestSchedule, 3, 0, 17.01, 0.005833333333, 0.29761666665, 0.30, 16.71, 34.31);
         checkPeriod(interestSchedule, 4, 0, 17.01, 0.005833333333, 0.200141666655, 0.20, 16.81, 17.50);
@@ -1929,7 +1929,7 @@ class ProgressiveEMICalculatorTest {
 
         checkPeriod(interestSchedule, 0, 0, 17.01, 0.0, 0.0, 1.17, 15.84, 84.16);
         checkPeriod(interestSchedule, 0, 1, 17.01, 0.005833333333, 1.1666666667, 1.17, 15.84, 84.16);
-        checkPeriod(interestSchedule, 1, 0, 17.01, 0.005833333333, 0.490933333306, 0.49, 16.52, 67.64);
+        checkPeriod(interestSchedule, 1, 0, 17.01, 0.005833333333, 0.490933333307, 0.49, 16.52, 67.64);
         checkPeriod(interestSchedule, 2, 0, 17.01, 0.005833333333, 0.789133333354, 0.79, 16.22, 51.42);
         checkPeriod(interestSchedule, 3, 0, 17.01, 0.005833333333, 0.299949999983, 0.30, 16.71, 34.71);
         checkPeriod(interestSchedule, 4, 0, 17.01, 0.005833333333, 0.202474999988, 0.20, 16.81, 17.90);

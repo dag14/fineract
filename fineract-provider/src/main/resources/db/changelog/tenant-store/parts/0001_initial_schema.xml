@@ -33,7 +33,7 @@
             <column name="schema_name" type="VARCHAR(100)">
                 <constraints nullable="false"/>
             </column>
-            <column defaultValue="3306" name="schema_server_port" type="VARCHAR(10)">
+            <column defaultValue="3307" name="schema_server_port" type="VARCHAR(10)">
                 <constraints nullable="false"/>
             </column>
             <column defaultValue="root" name="schema_username" type="VARCHAR(100)">

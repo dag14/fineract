@@ -26,8 +26,15 @@ services:
     env_file:
       - ${PWD}/config/docker/env/mysql.env
     healthcheck:
-      test: [ "CMD", "healthcheck.sh", "--su-mysql", "--connect", "--innodb_initialized" ]
+      test:
+        [
+          "CMD",
+          "healthcheck.sh",
+          "--su-mysql",
+          "--connect",
+          "--innodb_initialized",
+        ]
       timeout: 10s
       retries: 10
     ports:
-      - "3306:3306"
+      - "3307:3307"

@@ -4635,7 +4635,7 @@ Feature: EMI calculation and repayment schedule checks for interest bearing loan
       | 01 March 2024    | Accrual                | 11.75  | 0.0       | 11.75    | 0.0  | 0.0       | 0.0          | false    | false    |
     Then Loan status will be "CLOSED_OBLIGATIONS_MET"
 
-  @TestRailId:C3306
+  @TestRailId:C3307
   Scenario: UC13 - Multi disbursements, same days, multiple partial refund within first installment period
     When Admin sets the business date to "01 January 2024"
     When Admin creates a client with random data

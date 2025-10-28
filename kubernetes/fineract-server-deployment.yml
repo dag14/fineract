@@ -16,7 +16,6 @@
 # under the License.
 #
 
-
 apiVersion: v1
 kind: Service
 metadata:
@@ -25,16 +24,15 @@ metadata:
   name: fineract-server
 spec:
   ports:
-  - protocol: TCP
-    port: 8443
-    targetPort: 8443
+    - protocol: TCP
+      port: 8443
+      targetPort: 8443
   selector:
     app: fineract-server
     tier: backend
   type: LoadBalancer
 
 ---
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -57,64 +55,69 @@ spec:
       initContainers:
         - name: init-mydb
           image: busybox:1.28
-          command: ['sh', '-c', 'echo -e "Checking for the availability of MYSQL server deployment"; while ! nc -z "fineractmysql" 3306; do sleep 1; printf "-"; done; echo -e " >> MYSQL server has started";']
+          command:
+            [
+              "sh",
+              "-c",
+              'echo -e "Checking for the availability of MYSQL server deployment"; while ! nc -z "fineractmysql" 3307; do sleep 1; printf "-"; done; echo -e " >> MYSQL server has started";',
+            ]
       containers:
-      - name: fineract-server
-        image: apache/fineract:latest
-        resources:
-          limits:
-            cpu: "1000m"
-            memory: "1Gi"
-          requests:
-            cpu: "200m"
-            memory: "0.5Gi"
-        livenessProbe:
-          httpGet:
-            path: /fineract-provider/actuator/health/liveness
-            port: 8080
-          initialDelaySeconds: 180
-          periodSeconds: 1
-        readinessProbe:
-          httpGet:
-            path: /fineract-provider/actuator/health/readiness
-            port: 8080
-          initialDelaySeconds: 180
-          periodSeconds: 1
-        env:
-        - name: FINERACT_NODE_ID
-          value: '1'
-        - name: FINERACT_HIKARI_DRIVER_CLASS_NAME
-          value: org.mariadb.jdbc.Driver
-        - name: FINERACT_HIKARI_JDBC_URL
-          value: jdbc:mariadb://fineractmysql:3306/fineract_tenants
-        - name: FINERACT_HIKARI_USERNAME
-          valueFrom:
-            secretKeyRef:
-              name: fineract-tenants-db-secret
-              key: username
-        - name: FINERACT_HIKARI_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: fineract-tenants-db-secret
-              key: password
-        - name: FINERACT_DEFAULT_TENANTDB_HOSTNAME
-          value: fineractmysql
-        - name: FINERACT_DEFAULT_TENANTDB_PORT
-          value: '3306'
-        - name: FINERACT_DEFAULT_TENANTDB_UID
-          valueFrom:
-            secretKeyRef:
-              name: fineract-tenants-db-secret
-              key: username
-        - name: FINERACT_DEFAULT_TENANTDB_PWD
-          valueFrom:
-            secretKeyRef:
-              name: fineract-tenants-db-secret
-              key: password
-        - name: FINERACT_DEFAULT_TENANTDB_CONN_PARAMS
-          value: ''
-        - name: JAVA_TOOL_OPTIONS
-          value: '-Xmx1G'
-        ports:
-        - containerPort: 8443
-          name: fineract-server
+        - name: fineract-server
+          image: apache/fineract:latest
+          resources:
+            limits:
+              cpu: "1000m"
+              memory: "1Gi"
+            requests:
+              cpu: "200m"
+              memory: "0.5Gi"
+          livenessProbe:
+            httpGet:
+              path: /fineract-provider/actuator/health/liveness
+              port: 8080
+            initialDelaySeconds: 180
+            periodSeconds: 1
+          readinessProbe:
+            httpGet:
+              path: /fineract-provider/actuator/health/readiness
+              port: 8080
+            initialDelaySeconds: 180
+            periodSeconds: 1
+          env:
+            - name: FINERACT_NODE_ID
+              value: "1"
+            - name: FINERACT_HIKARI_DRIVER_CLASS_NAME
+              value: org.mariadb.jdbc.Driver
+            - name: FINERACT_HIKARI_JDBC_URL
+              value: jdbc:mariadb://fineractmysql:3307/fineract_tenants
+            - name: FINERACT_HIKARI_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: fineract-tenants-db-secret
+                  key: username
+            - name: FINERACT_HIKARI_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: fineract-tenants-db-secret
+                  key: password
+            - name: FINERACT_DEFAULT_TENANTDB_HOSTNAME
+              value: fineractmysql
+            - name: FINERACT_DEFAULT_TENANTDB_PORT
+              value: "3307"
+            - name: FINERACT_DEFAULT_TENANTDB_UID
+              valueFrom:
+                secretKeyRef:
+                  name: fineract-tenants-db-secret
+                  key: username
+            - name: FINERACT_DEFAULT_TENANTDB_PWD
+              valueFrom:
+                secretKeyRef:
+                  name: fineract-tenants-db-secret
+                  key: password
+            - name: FINERACT_DEFAULT_TENANTDB_CONN_PARAMS
+              value: ""
+            - name: JAVA_TOOL_OPTIONS
+              value: "-Xmx1G"
+          ports:
+            - containerPort: 8443
+              name: fineract-server
